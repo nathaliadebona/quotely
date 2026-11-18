@@ -1,0 +1,23 @@
+:root {
+    --cor-fundo: #D8D2C4;
+    --cor-fundo-alt: #FBFAF6;
+    --cor-texto: #1B1B1B;
+    --cor-destaque: #C8321E;
+
+    --fonte-titulo: 'Space Grotesk', sans-serif;
+    --fonte-corpo: 'Space Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+}

@@ -21,3 +21,124 @@ body {
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.painel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+h1 {
+    font-family: var(--fonte-titulo);
+    font-weight: bold;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0 0.75rem;
+    border: 0.125rem solid var(--cor-texto);
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--cor-fundo-alt);
+}
+
+button {
+    font-family: var(--fonte-corpo);
+}
+
+ul {
+    list-style: none;
+    border-top: 0.125rem dashed var(--cor-texto);
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 0.125rem dashed var(--cor-texto);
+}
+
+.servico-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.servico-nome {
+    font-family: var(--fonte-titulo);
+    font-weight: bold;
+    font-size: 1.125rem;
+}
+
+.servico-valor {
+    font-size: 0.875rem;
+}
+
+.menos-btn,
+.mais-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0.125rem solid var(--cor-texto);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.mais-btn {
+    color: var(--cor-fundo);
+    background-color: var(--cor-texto);
+}
+
+.remover-btn {
+    min-height: 2.75rem;
+    border: none;
+    text-decoration: underline;
+    background: none;
+}
+
+.painel-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.painel-acoes button {
+    min-height: 3rem;
+    padding: 0 1.25rem;
+    border: 0.125rem solid var(--cor-texto);
+    font-weight: bold;
+    background-color: var(--cor-fundo-alt);
+}
+
+.painel-acoes .baixar-btn {
+    color: var(--cor-fundo-alt);
+    background-color: var(--cor-destaque);
+}

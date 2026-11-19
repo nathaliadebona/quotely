@@ -22,6 +22,10 @@ body {
     background-color: var(--cor-fundo);
 }
 
+[hidden] {
+    display: none !important;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -145,6 +149,21 @@ button {
     background-color: var(--cor-destaque);
 }
 
+#painel-download {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1rem;
+    border: 0.125rem solid var(--cor-texto);
+    background-color: var(--cor-fundo-alt);
+}
+
+#painel-download form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
 .recibo {
     display: flex;
     flex-direction: column;
@@ -162,7 +181,7 @@ button {
     text-align: center;
 }
 
-h2 {
+.recibo-cabecalho h2 {
     font-family: var(--fonte-titulo);
     font-weight: bold;
     font-size: 1.375rem;
@@ -228,6 +247,23 @@ dl {
 
 .total dl {
     align-items: baseline;
+}
+
+.pagamento,
+.observacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pagamento span:nth-child(1),
+.observacoes span:nth-child(1) {
+    font-weight: bold;
+}
+
+.observacoes {
+    overflow-wrap: anywhere;
+    white-space: pre-line;
 }
 
 .carimbo {

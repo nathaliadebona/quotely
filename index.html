@@ -72,8 +72,52 @@
             <div class="painel-acoes">
                 <button type="button">+ Adicionar serviço</button>
                 <button type="button" aria-pressed="false">Urgente</button>
-                <button type="button" class="baixar-btn">Baixar orçamento</button>
+                <button type="button" class="baixar-btn" aria-expanded="false" aria-controls="painel-download">Baixar orçamento</button>
             </div>
+
+            <section id="painel-download" aria-labelledby="detalhes-orcamento" hidden>
+                <h2 id="detalhes-orcamento">Detalhes do orçamento</h2>
+
+                <form>
+                    <div class="campo">
+                        <label for="nome-cliente">Nome do cliente</label>
+                        <input type="text" id="nome-cliente">
+                    </div>
+
+                    <div class="campo" role="group" aria-labelledby="validade">
+                        <span id="validade">Validade da proposta</span>
+                        <div class="opcoes">
+                            <button type="button" aria-pressed="true">7 dias</button>
+                            <button type="button" aria-pressed="false">15 dias</button>
+                            <button type="button" aria-pressed="false">30 dias</button>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="forma-pagamento">Forma de pagamento</label>
+                        <input type="text" id="forma-pagamento" placeholder="Ex.: Pix, 50% na entrada e 50% na entrega">
+                    </div>
+
+                    <div class="campo">
+                        <label for="observacoes">Observações (opcional)</label>
+                        <textarea id="observacoes" rows="3"></textarea>
+                    </div>
+
+                    <div class="campo" role="group" aria-labelledby="formato">
+                        <span id="formato">Formato</span>
+                        <div class="opcoes">
+                            <button type="button" aria-pressed="true">PDF</button>
+                            <button type="button" aria-pressed="false">Imagem</button>
+                            <button type="button" aria-pressed="false">Texto</button>
+                        </div>
+                    </div>
+
+                    <div class="btn-acoes">
+                        <button type="button">Baixar PDF</button>
+                        <button type="button">Copiar texto</button>
+                    </div>
+                </form>
+            </section>
         </section>
 
         <section class="recibo" aria-labelledby="titulo-secundario">
@@ -96,6 +140,11 @@
                 <dl>
                     <dt>Cliente</dt>
                     <dd>[Nome do cliente]</dd>
+                </dl>
+
+                <dl>
+                    <dt>Validade</dt>
+                    <dd>7 dias</dd>
                 </dl>
             </div>
 
@@ -133,12 +182,29 @@
                     </dl>
                 </div>
 
+                <div class="urgencia" hidden>
+                    <dl>
+                        <dt>Urgência (+20%)</dt>
+                        <dd>R$ 168,00</dd>
+                    </dl>
+                </div>
+
                 <div class="total">
                     <dl>
                         <dt>TOTAL</dt>
                         <dd>R$ 840,00</dd>
                     </dl>
                 </div>
+            </div>
+
+            <div class="pagamento">
+                <span>Pagamento</span>
+                <span class="forma-pagamento">[Forma de pagamento]</span>
+            </div>
+
+            <div class="observacoes" hidden>
+                <span>Observações</span>
+                <span class="recibo-observacoes">[Observações]</span>
             </div>
 
             <div class="carimbo">

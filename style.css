@@ -55,7 +55,8 @@ h1 {
     gap: 0.375rem;
 }
 
-label {
+label,
+#cobranca {
     font-weight: bold;
     font-size: 0.875rem;
 }
@@ -110,6 +111,7 @@ button {
     border: 0.125rem solid var(--cor-texto);
     font-size: 1.5rem;
     line-height: 1;
+    background-color: var(--cor-fundo-alt);
 }
 
 .mais-btn {
@@ -250,6 +252,96 @@ dl {
 
 .mensagem {
     text-align: center;
+}
+
+/* MODAL ADICIONAR SERVIÇO */
+#modal-servico {
+    width: calc(100% - 2rem);
+    max-width: 32.5rem;
+    margin: auto;
+    padding: 2rem;
+    border: 0.125rem solid var(--cor-texto);
+    background-color: var(--cor-fundo-alt);
+    box-shadow: 0.5rem 0.5rem var(--cor-texto);
+}
+
+dialog[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+dialog::backdrop {
+    background-color: rgba(27, 27, 27, 0.72);
+}
+
+dialog p {
+    font-size: 0.875rem;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.opcoes {
+    display: flex;
+}
+
+.opcoes button {
+    flex: 1;
+    min-height: 2.75rem;
+    border: 0.125rem solid var(--cor-texto);
+    font-weight: bold;
+    background-color: var(--cor-fundo-alt);
+}
+
+.opcoes button[aria-pressed="true"] {
+    color: var(--cor-fundo-alt);
+    background-color: var(--cor-texto);
+}
+
+textarea {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 0.125rem solid var(--cor-texto);
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--cor-fundo-alt);
+    resize: none;
+}
+
+.previa {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border: 0.125rem dashed var(--cor-texto);
+}
+
+.previa span:nth-child(1) {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.btn-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.btn-acoes button {
+    min-height: 2.75rem;
+    padding: 0 0.75rem;
+    border: 0.125rem solid var(--cor-texto);
+    font-weight: bold;
+    background-color: var(--cor-fundo-alt);
+}
+
+#salvar-btn {
+    color: var(--cor-fundo-alt);
+    background-color: var(--cor-texto);
 }
 
 @media (min-width: 64rem) {

@@ -151,6 +151,50 @@
             </div>
         </section>
     </main>
+
+    <dialog id="modal-servico" aria-labelledby="adicionar-servico">
+        <header>
+            <h2 id="adicionar-servico">Adicionar serviço</h2>
+            <p>Ele fica salvo na sua lista e aparece na nota quando você escolher as horas.</p>
+        </header>
+        
+        <form method="dialog">
+            <div class="campo">
+                <label for="novo-nome">Nome do serviço</label>
+                <input type="text" id="novo-nome" placeholder="Ex.: Revisão de texto">
+            </div>
+
+            <div class="campo">
+                <label for="novo-valor">Valor (R$)</label>
+                <input type="text" id="novo-valor" inputmode="decimal" placeholder="0,00">
+            </div>
+
+            <div class="campo" role="group" aria-labelledby="cobranca">
+                <span id="cobranca">Cobrado por</span>
+                <div class="opcoes">
+                    <button type="button" id="hora-btn" aria-pressed="true">Hora</button>
+                    <button type="button" id="dia-btn" aria-pressed="false">Dia</button>
+                    <button type="button" id="projeto-btn" aria-pressed="false">Projeto</button>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="descricao">Descrição curta (opcional)</label>
+                <textarea id="descricao" rows="2"></textarea>
+            </div>
+
+            <div class="previa">
+                <span>Como aparece na nota</span>
+                <span class="previa-nome">[Nome do serviço]</span>
+                <span class="previa-valor">1 h × R$ 0,00</span>
+            </div>
+
+            <div class="btn-acoes">
+                <button type="button" id="cancelar-btn">Cancelar</button>
+                <button type="submit" id="salvar-btn">Salvar serviço</button>
+            </div>
+        </form>
+    </dialog>
     
     <script src="script.js" defer></script>
 </body>

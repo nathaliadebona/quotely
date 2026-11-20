@@ -66,8 +66,16 @@ function renderizarRecibo() {
     });
 
     reciboLista.innerHTML = itens.join('');
-}
 
+    let subtotal = 0;
+    
+    for (const servico of servicos) {
+        subtotal = subtotal + servico.horas * servico.valor;
+    }
+
+    subtotalValor.textContent = formatarMoeda(subtotal);
+    totalValor.textContent = formatarMoeda(subtotal);
+}
 renderizarRecibo();
 renderizarServicos();
 

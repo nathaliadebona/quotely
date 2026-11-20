@@ -87,13 +87,13 @@ function renderizarServicos() {
         return `<li>
             <div class="servico-infos">
                 <span class="servico-nome">${escaparHtml(servico.nome)}</span>
-                <span class="servico-valor">${formatarMoeda(servico.valor)} por hora</span>
+                <span class="servico-valor">${formatarMoeda(servico.valor)} por ${servico.unidade}</span>
                 <button type="button" aria-label="Remover serviço ${escaparHtml(servico.nome)}" class="remover-btn" data-id="${servico.id}">Remover</button>
             </div>
 
             <div class="servico-controles">
                 <button type="button" aria-label="Menos uma hora de ${escaparHtml(servico.nome)}" class="menos-btn" data-id="${servico.id}">−</button>
-                <span aria-live="polite" class="servico-horas">${servico.horas} h</span>
+                <span aria-live="polite" class="servico-horas">${formatarQuantidade(servico)}</span>
                 <button type="button" aria-label="Mais uma hora de ${escaparHtml(servico.nome)}" class="mais-btn" data-id="${servico.id}">+</button>
             </div>
         </li>`;
@@ -111,7 +111,7 @@ function renderizarRecibo() {
         return `<li>
             <span class="recibo-servico">${escaparHtml(servico.nome)}</span>
             <dl>
-                <dt>${servico.horas} h × ${formatarMoeda(servico.valor)}</dt>
+                <dt>${formatarQuantidade(servico)} × ${formatarMoeda(servico.valor)}</dt>
                 <dd>${formatarMoeda(servico.horas * servico.valor)}</dd>
             </dl>
         </li>`;
@@ -144,6 +144,28 @@ function resetarFormulario() {
             botao.setAttribute('aria-pressed', 'false');
         }
     });
+}
+
+function formatarQuantidade(servico) {
+    if (servico.unidade === 'hora') {
+        return `${servico.horas} h`;
+    }
+
+    if (servico.unidade === 'dia') {
+        if (servico.horas === 1) {
+            return `${servico.horas} dia`;
+        }
+
+        return `${servico.horas} dias`;
+    }
+
+    if (servico.unidade === 'projeto') {
+        if (servico.horas === 1) {
+            return `${servico.horas} projeto`;
+        }
+
+        return `${servico.horas} projetos`;
+    }
 }
 
 adicionarBtn.addEventListener('click', () => {

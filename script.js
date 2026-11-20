@@ -1,4 +1,4 @@
-const servicos = [
+let servicos = [
     {
         id: 1,
         nome: "Gestão de e-mails",
@@ -45,6 +45,12 @@ servicosLista.addEventListener('click', (evento) => {
         if (servico.horas > 0) {
             servico.horas = servico.horas - 1;
         }
+    }
+
+    if (evento.target.classList.contains('remover-btn')) {
+        servicos = servicos.filter((item) => {
+            return item.id !== id;
+        });
     }
 
     renderizarServicos();

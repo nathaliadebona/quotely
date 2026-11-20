@@ -25,6 +25,9 @@ const servicosLista = document.querySelector('#servicos-lista');
 const reciboLista = document.querySelector('#recibo-lista');
 const subtotalValor = document.getElementById('subtotal-valor');
 const totalValor = document.getElementById('total-valor');
+const modalServico = document.getElementById('modal-servico');
+const adicionarBtn = document.getElementById('adicionar-btn');
+const cancelarBtn = document.getElementById('cancelar-btn');
 
 servicosLista.addEventListener('click', (evento) => {
     const id = Number(evento.target.dataset.id);
@@ -107,6 +110,15 @@ function renderizarRecibo() {
     subtotalValor.textContent = formatarMoeda(subtotal);
     totalValor.textContent = formatarMoeda(subtotal);
 }
+
+adicionarBtn.addEventListener('click', () => {
+    modalServico.showModal();
+})
+
+cancelarBtn.addEventListener('click', () => {
+    modalServico.close();
+})
+
 renderizarRecibo();
 renderizarServicos();
 

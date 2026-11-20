@@ -28,6 +28,9 @@ const totalValor = document.getElementById('total-valor');
 const modalServico = document.getElementById('modal-servico');
 const adicionarBtn = document.getElementById('adicionar-btn');
 const cancelarBtn = document.getElementById('cancelar-btn');
+const formServico = document.getElementById('form-servico');
+const campoNome = document.getElementById('novo-nome');
+const campoValor = document.getElementById('novo-valor');
 
 servicosLista.addEventListener('click', (evento) => {
     const id = Number(evento.target.dataset.id);
@@ -113,11 +116,30 @@ function renderizarRecibo() {
 
 adicionarBtn.addEventListener('click', () => {
     modalServico.showModal();
-})
+});
 
 cancelarBtn.addEventListener('click', () => {
     modalServico.close();
-})
+});
+
+formServico.addEventListener('submit', () => {
+    const nome = campoNome.value.trim();
+    const valor = Number(campoValor.value.trim().replace(',', '.'));
+
+    servicos.push(
+        {
+            id: Date.now(),
+            nome: nome,
+            valor: valor,
+            horas: 1
+        }
+    );
+
+    renderizarServicos();
+    renderizarRecibo();
+
+    formServico.reset();
+});
 
 renderizarRecibo();
 renderizarServicos();

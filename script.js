@@ -36,6 +36,7 @@ const campoNome = document.getElementById('novo-nome');
 const campoValor = document.getElementById('novo-valor');
 const mensagemErro = document.getElementById('erro-servico');
 const opcoesCobranca = document.getElementById('opcoes-cobranca');
+const urgenteBtn = document.getElementById('urgente-btn');
 
 let cobrado = 'hora';
 
@@ -220,6 +221,14 @@ opcoesCobranca.addEventListener('click', (evento) => {
     evento.target.setAttribute('aria-pressed', 'true');
 
     cobrado = evento.target.dataset.unidade;
+});
+
+urgenteBtn.addEventListener('click', () => {
+    if (urgenteBtn.getAttribute('aria-pressed') === 'true') {
+        urgenteBtn.setAttribute('aria-pressed', 'false');
+    } else {
+        urgenteBtn.setAttribute('aria-pressed', 'true');
+    }
 });
 
 renderizarRecibo();

@@ -343,7 +343,8 @@ dialog form {
     background-color: var(--cor-fundo-alt);
 }
 
-.opcoes button[aria-pressed="true"] {
+.opcoes button[aria-pressed="true"],
+.painel-acoes button[aria-pressed="true"] {
     color: var(--cor-fundo-alt);
     background-color: var(--cor-texto);
 }

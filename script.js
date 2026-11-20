@@ -67,19 +67,27 @@ function formatarMoeda(numero) {
     return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
+function escaparHtml(texto) {
+    return texto
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
 function renderizarServicos() {
     const itens = servicos.map(function (servico) {
         return `<li>
             <div class="servico-infos">
-                <span class="servico-nome">${servico.nome}</span>
+                <span class="servico-nome">${escaparHtml(servico.nome)}</span>
                 <span class="servico-valor">${formatarMoeda(servico.valor)} por hora</span>
-                <button type="button" aria-label="Remover serviço ${servico.nome}" class="remover-btn" data-id="${servico.id}">Remover</button>
+                <button type="button" aria-label="Remover serviço ${escaparHtml(servico.nome)}" class="remover-btn" data-id="${servico.id}">Remover</button>
             </div>
 
             <div class="servico-controles">
-                <button type="button" aria-label="Menos uma hora de ${servico.nome}" class="menos-btn" data-id="${servico.id}">−</button>
+                <button type="button" aria-label="Menos uma hora de ${escaparHtml(servico.nome)}" class="menos-btn" data-id="${servico.id}">−</button>
                 <span aria-live="polite" class="servico-horas">${servico.horas} h</span>
-                <button type="button" aria-label="Mais uma hora de ${servico.nome}" class="mais-btn" data-id="${servico.id}">+</button>
+                <button type="button" aria-label="Mais uma hora de ${escaparHtml(servico.nome)}" class="mais-btn" data-id="${servico.id}">+</button>
             </div>
         </li>`;
     });
@@ -94,7 +102,7 @@ function renderizarRecibo() {
 
     const itens = escolhidos.map(function (servico) {
         return `<li>
-            <span class="recibo-servico">${servico.nome}</span>
+            <span class="recibo-servico">${escaparHtml(servico.nome)}</span>
             <dl>
                 <dt>${servico.horas} h × ${formatarMoeda(servico.valor)}</dt>
                 <dd>${formatarMoeda(servico.horas * servico.valor)}</dd>

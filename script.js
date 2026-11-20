@@ -3,21 +3,24 @@ let servicos = [
         id: 1,
         nome: "Gestão de e-mails",
         valor: 40,
-        horas: 6
+        horas: 6,
+        unidade: 'hora'
     },
 
     {
         id: 2,
         nome: "Agenda e agendamentos",
         valor: 40,
-        horas: 4
+        horas: 4,
+        unidade: 'hora'
     },
 
     {
         id: 3,
         nome: "Conciliação financeira",
         valor: 55,
-        horas: 8
+        horas: 8,
+        unidade: 'hora'
     }
 ];
 
@@ -32,6 +35,9 @@ const formServico = document.getElementById('form-servico');
 const campoNome = document.getElementById('novo-nome');
 const campoValor = document.getElementById('novo-valor');
 const mensagemErro = document.getElementById('erro-servico');
+const opcoesCobranca = document.getElementById('opcoes-cobranca');
+
+let cobrado = 'hora';
 
 servicosLista.addEventListener('click', (evento) => {
     const id = Number(evento.target.dataset.id);
@@ -123,6 +129,23 @@ function renderizarRecibo() {
     totalValor.textContent = formatarMoeda(subtotal);
 }
 
+function resetarFormulario() {
+    formServico.reset();
+    mensagemErro.hidden = true;
+
+    cobrado = 'hora';
+
+    const botoes = opcoesCobranca.querySelectorAll('button');
+
+    botoes.forEach((botao) => {
+        if (botao.dataset.unidade === 'hora') {
+            botao.setAttribute('aria-pressed', 'true');
+        } else {
+            botao.setAttribute('aria-pressed', 'false');
+        }
+    });
+}
+
 adicionarBtn.addEventListener('click', () => {
     modalServico.showModal();
     mensagemErro.hidden = true;
@@ -130,8 +153,7 @@ adicionarBtn.addEventListener('click', () => {
 
 cancelarBtn.addEventListener('click', () => {
     modalServico.close();
-    formServico.reset();
-    mensagemErro.hidden = true;
+    resetarFormulario(); 
 });
 
 formServico.addEventListener('submit', (evento) => {
@@ -151,14 +173,31 @@ formServico.addEventListener('submit', (evento) => {
             id: Date.now(),
             nome: nome,
             valor: valor,
-            horas: 1
+            horas: 1,
+            unidade: cobrado,
         }
     );
 
     renderizarServicos();
     renderizarRecibo();
 
-    formServico.reset();
+    resetarFormulario();
+});
+
+opcoesCobranca.addEventListener('click', (evento) => {
+    if (evento.target.tagName !== 'BUTTON') {
+        return;
+    }
+
+    const botoes = opcoesCobranca.querySelectorAll('button');
+
+    botoes.forEach((botao) => {
+        botao.setAttribute('aria-pressed', 'false');
+    });
+
+    evento.target.setAttribute('aria-pressed', 'true');
+
+    cobrado = evento.target.dataset.unidade;
 });
 
 renderizarRecibo();

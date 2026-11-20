@@ -161,12 +161,12 @@
         <form method="dialog" id="form-servico">
             <div class="campo">
                 <label for="novo-nome">Nome do serviço</label>
-                <input type="text" id="novo-nome" placeholder="Ex.: Revisão de texto">
+                <input type="text" id="novo-nome" placeholder="Ex.: Revisão de texto" required>
             </div>
 
             <div class="campo">
                 <label for="novo-valor">Valor (R$)</label>
-                <input type="text" id="novo-valor" inputmode="decimal" placeholder="0,00">
+                <input type="text" id="novo-valor" inputmode="decimal" placeholder="0,00" required>
             </div>
 
             <div class="campo" role="group" aria-labelledby="cobranca">
@@ -188,6 +188,8 @@
                 <span class="previa-nome">[Nome do serviço]</span>
                 <span class="previa-valor">1 h × R$ 0,00</span>
             </div>
+
+            <p id="erro-servico" hidden role="alert">Informe um valor maior que zero.</p>
 
             <div class="btn-acoes">
                 <button type="button" id="cancelar-btn">Cancelar</button>

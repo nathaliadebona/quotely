@@ -31,6 +31,7 @@ const cancelarBtn = document.getElementById('cancelar-btn');
 const formServico = document.getElementById('form-servico');
 const campoNome = document.getElementById('novo-nome');
 const campoValor = document.getElementById('novo-valor');
+const mensagemErro = document.getElementById('erro-servico');
 
 servicosLista.addEventListener('click', (evento) => {
     const id = Number(evento.target.dataset.id);
@@ -124,15 +125,26 @@ function renderizarRecibo() {
 
 adicionarBtn.addEventListener('click', () => {
     modalServico.showModal();
+    mensagemErro.hidden = true;
 });
 
 cancelarBtn.addEventListener('click', () => {
     modalServico.close();
+    formServico.reset();
+    mensagemErro.hidden = true;
 });
 
-formServico.addEventListener('submit', () => {
+formServico.addEventListener('submit', (evento) => {
     const nome = campoNome.value.trim();
     const valor = Number(campoValor.value.trim().replace(',', '.'));
+
+    if (isNaN(valor) || valor <= 0) {
+        evento.preventDefault();
+        mensagemErro.hidden = false;
+        return;
+    }
+
+    mensagemErro.hidden = true;
 
     servicos.push(
         {

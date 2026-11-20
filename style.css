@@ -88,6 +88,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
     padding: 1rem 0;
     border-bottom: 0.125rem dashed var(--cor-texto);
 }
@@ -96,6 +97,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .servico-nome {
@@ -106,6 +109,13 @@ button {
 
 .servico-valor {
     font-size: 0.875rem;
+}
+
+.servico-controles {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .menos-btn,

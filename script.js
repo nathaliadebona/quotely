@@ -26,6 +26,31 @@ const reciboLista = document.querySelector('#recibo-lista');
 const subtotalValor = document.getElementById('subtotal-valor');
 const totalValor = document.getElementById('total-valor');
 
+servicosLista.addEventListener('click', (evento) => {
+    const id = Number(evento.target.dataset.id);
+
+    const servico = servicos.find((item) => {
+        return item.id === id;
+    });
+
+    if (!servico) {
+        return;
+    }
+
+    if (evento.target.classList.contains('mais-btn')) {
+        servico.horas = servico.horas + 1;
+    }
+
+    if (evento.target.classList.contains('menos-btn')) {
+        if (servico.horas > 0) {
+            servico.horas = servico.horas - 1;
+        }
+    }
+
+    renderizarServicos();
+    renderizarRecibo();
+})
+
 function formatarMoeda(numero) {
     return numero.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }

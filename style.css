@@ -391,6 +391,11 @@ textarea {
     background-color: var(--cor-texto);
 }
 
+.vazio {
+    font-style: italic;
+    opacity: 0.7;
+}
+
 @media (min-width: 64rem) {
     main {
         flex-direction: row;

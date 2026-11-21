@@ -105,6 +105,11 @@ function escaparHtml(texto) {
 }
 
 function renderizarServicos() {
+    if (servicos.length === 0) {
+        servicosLista.innerHTML = '<li class="vazio">Nenhum serviço cadastrado. Clique em "+ Adicionar serviço".</li>';
+        return;
+    }
+
     const itens = servicos.map(function (servico) {
         return `<li>
             <div class="servico-infos">
@@ -129,17 +134,21 @@ function renderizarRecibo() {
         return servico.horas > 0;
     });
 
-    const itens = escolhidos.map(function (servico) {
-        return `<li>
-            <span class="recibo-servico">${escaparHtml(servico.nome)}</span>
-            <dl>
-                <dt>${formatarQuantidade(servico)} × ${formatarMoeda(servico.valor)}</dt>
-                <dd>${formatarMoeda(servico.horas * servico.valor)}</dd>
-            </dl>
-        </li>`;
-    });
+    if (escolhidos.length === 0) {
+        reciboLista.innerHTML = '<li class="vazio">Nenhum serviço escolhido ainda.</li>';
+    } else {
+        const itens = escolhidos.map(function (servico) {
+            return `<li>
+                <span class="recibo-servico">${escaparHtml(servico.nome)}</span>
+                <dl>
+                    <dt>${formatarQuantidade(servico)} × ${formatarMoeda(servico.valor)}</dt>
+                    <dd>${formatarMoeda(servico.horas * servico.valor)}</dd>
+                </dl>
+            </li>`;
+        });
 
-    reciboLista.innerHTML = itens.join('');
+        reciboLista.innerHTML = itens.join('');
+    }
 
     let subtotal = 0;
     

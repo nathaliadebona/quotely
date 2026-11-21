@@ -252,8 +252,7 @@ adicionarBtn.addEventListener('click', () => {
 });
 
 cancelarBtn.addEventListener('click', () => {
-    modalServico.close();
-    resetarFormulario(); 
+    modalServico.close(); 
 });
 
 formServico.addEventListener('submit', (evento) => {
@@ -280,8 +279,6 @@ formServico.addEventListener('submit', (evento) => {
 
     renderizarServicos();
     renderizarRecibo();
-
-    resetarFormulario();
 });
 
 opcoesCobranca.addEventListener('click', (evento) => {
@@ -380,6 +377,10 @@ copiarBtn.addEventListener('click', () => {
 
 baixarPdfBtn.addEventListener('click', () => {
     window.print();
+});
+
+modalServico.addEventListener('close', () => {
+    resetarFormulario();
 });
 
 renderizarRecibo();

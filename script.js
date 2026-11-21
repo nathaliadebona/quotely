@@ -201,6 +201,40 @@ function formatarQuantidade(servico) {
     }
 }
 
+function gerarTexto() {
+    const linhas = [];
+
+    linhas.push(reciboMarca.textContent);
+    linhas.push(reciboCliente.textContent);
+    linhas.push('');
+
+    const escolhidos = servicos.filter((servico) => {
+        return servico.horas > 0;
+    });
+
+    for (const servico of escolhidos) {
+        linhas.push(`- ${servico.nome}: ${formatarQuantidade(servico)} × ${formatarMoeda(servico.valor)} = ${formatarMoeda(servico.horas * servico.valor)}`);
+    }
+
+    if (urgente) {
+        linhas.push(`Urgência (+20%): ${urgenciaValor.textContent}`);
+    }
+
+    linhas.push('');
+    linhas.push(`Total: ${totalValor.textContent}`);
+
+    linhas.push('');
+    linhas.push(`Validade: ${reciboValidade.textContent}`);
+    linhas.push(`Pagamento: ${reciboFormaPagamento.textContent}`);
+
+    if (!blocoObservacoes.hidden) {
+        linhas.push('');
+        linhas.push(`Observações: ${reciboObservacoes.textContent}`);
+    }
+
+    return linhas.join('\n');
+}
+
 adicionarBtn.addEventListener('click', () => {
     modalServico.showModal();
     mensagemErro.hidden = true;

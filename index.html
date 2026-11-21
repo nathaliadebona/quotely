@@ -44,10 +44,10 @@
 
                     <div class="campo" role="group" aria-labelledby="validade">
                         <span id="validade">Validade da proposta</span>
-                        <div class="opcoes">
-                            <button type="button" aria-pressed="true">7 dias</button>
-                            <button type="button" aria-pressed="false">15 dias</button>
-                            <button type="button" aria-pressed="false">30 dias</button>
+                        <div class="opcoes" id="opcoes-validade">
+                            <button type="button" aria-pressed="true" data-dias="7">7 dias</button>
+                            <button type="button" aria-pressed="false" data-dias="15">15 dias</button>
+                            <button type="button" aria-pressed="false" data-dias="30">30 dias</button>
                         </div>
                     </div>
 
@@ -102,7 +102,7 @@
 
                 <dl>
                     <dt>Validade</dt>
-                    <dd>7 dias</dd>
+                    <dd id="recibo-validade">7 dias</dd>
                 </dl>
             </div>
 
@@ -147,7 +147,7 @@
 
             <div class="mensagem">
                 <p>Agradecemos a confiança!</p>
-                <p>Proposta válida por 7 dias.</p>
+                <p id="mensagem-validade">Proposta válida por 7 dias.</p>
             </div>
         </section>
     </main>

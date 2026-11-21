@@ -49,6 +49,9 @@ const nomeCliente = document.getElementById('nome-cliente');
 const reciboCliente = document.getElementById('recibo-cliente');
 const formaPagamento = document.getElementById('forma-pagamento');
 const campoObservacoes = document.getElementById('observacoes');
+const opcoesValidade = document.getElementById('opcoes-validade');
+const reciboValidade = document.getElementById('recibo-validade');
+const mensagemValidade = document.getElementById('mensagem-validade');
 
 let cobrado = 'hora';
 let urgente = false;
@@ -288,6 +291,25 @@ campoObservacoes.addEventListener('input', () => {
 
     blocoObservacoes.hidden = texto === '';
 });
+
+opcoesValidade.addEventListener('click', (evento) => {
+    if (evento.target.tagName !== 'BUTTON') {
+        return;
+    }
+
+    const botoes = opcoesValidade.querySelectorAll('button');
+
+    botoes.forEach((botao) => {
+        botao.setAttribute('aria-pressed', 'false');
+    });
+
+    evento.target.setAttribute('aria-pressed', 'true');
+
+    const dias = evento.target.dataset.dias;
+
+    reciboValidade.textContent = `${dias} dias`;
+    mensagemValidade.textContent = `Proposta válida por ${dias} dias`;
+})
 
 renderizarRecibo();
 renderizarServicos();

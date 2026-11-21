@@ -360,6 +360,12 @@ formDownload.addEventListener('submit', (evento) => {
 
 copiarBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(gerarTexto());
+
+    copiarBtn.textContent = 'Copiado!';
+
+    setTimeout(() => {
+        copiarBtn.textContent = 'Copiar texto';
+    }, 2000);
 });
 
 renderizarRecibo();

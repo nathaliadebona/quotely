@@ -178,9 +178,10 @@ button {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.5rem 2.5rem;
     font-size: 0.875rem;
     background-color: var(--cor-fundo-alt);
+    mask: conic-gradient(from -45deg at bottom, transparent, #000 1deg 89deg, transparent 90deg) 50% / 1.5rem 100%;
 }
 
 .recibo-cabecalho {
@@ -411,7 +412,7 @@ textarea {
         min-width: 0;
     }
 
-    .recibo {
+    .recibo-externo {
         flex: 0 1 25rem;
         transform: rotate(1deg);
         filter: drop-shadow(0.375rem 0.5rem 0 rgba(27, 27, 27, 0.25));
@@ -437,7 +438,7 @@ textarea {
         display: none;
     }
 
-    .recibo {
+    .recibo-externo {
         transform: none;
         filter: none;
     }

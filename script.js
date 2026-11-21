@@ -52,6 +52,8 @@ const campoObservacoes = document.getElementById('observacoes');
 const opcoesValidade = document.getElementById('opcoes-validade');
 const reciboValidade = document.getElementById('recibo-validade');
 const mensagemValidade = document.getElementById('mensagem-validade');
+const marca = document.getElementById('marca');
+const reciboMarca = document.getElementById('titulo-secundario');
 
 let cobrado = 'hora';
 let urgente = false;
@@ -310,6 +312,11 @@ opcoesValidade.addEventListener('click', (evento) => {
     reciboValidade.textContent = `${dias} dias`;
     mensagemValidade.textContent = `Proposta válida por ${dias} dias`;
 })
+
+marca.addEventListener('input', () => {
+    const texto = marca.value.trim();
+    reciboMarca.textContent = texto || '[Sua marca]';
+});
 
 renderizarRecibo();
 renderizarServicos();

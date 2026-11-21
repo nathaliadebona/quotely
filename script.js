@@ -26,6 +26,8 @@ let servicos = [
 
 const servicosLista = document.querySelector('#servicos-lista');
 const reciboLista = document.querySelector('#recibo-lista');
+const urgencia = document.querySelector('.urgencia');
+
 const subtotalValor = document.getElementById('subtotal-valor');
 const totalValor = document.getElementById('total-valor');
 const modalServico = document.getElementById('modal-servico');
@@ -37,8 +39,10 @@ const campoValor = document.getElementById('novo-valor');
 const mensagemErro = document.getElementById('erro-servico');
 const opcoesCobranca = document.getElementById('opcoes-cobranca');
 const urgenteBtn = document.getElementById('urgente-btn');
+const urgenciaValor = document.getElementById('urgencia-valor');
 
 let cobrado = 'hora';
+let urgente = false;
 
 servicosLista.addEventListener('click', (evento) => {
     const id = Number(evento.target.dataset.id);
@@ -126,8 +130,21 @@ function renderizarRecibo() {
         subtotal = subtotal + servico.horas * servico.valor;
     }
 
+    let total = subtotal;
+
+    if (urgente) {
+        const urgenciaTotal = subtotal * 0.2;
+
+        urgenciaValor.textContent = formatarMoeda(urgenciaTotal);
+        urgencia.hidden = false;
+
+        total = total + urgenciaTotal;
+    } else {
+        urgencia.hidden = true;
+    }
+
     subtotalValor.textContent = formatarMoeda(subtotal);
-    totalValor.textContent = formatarMoeda(subtotal);
+    totalValor.textContent = formatarMoeda(total);
 }
 
 function resetarFormulario() {
@@ -226,9 +243,13 @@ opcoesCobranca.addEventListener('click', (evento) => {
 urgenteBtn.addEventListener('click', () => {
     if (urgenteBtn.getAttribute('aria-pressed') === 'true') {
         urgenteBtn.setAttribute('aria-pressed', 'false');
+        urgente = false;
     } else {
         urgenteBtn.setAttribute('aria-pressed', 'true');
+        urgente = true;
     }
+
+    renderizarRecibo();
 });
 
 renderizarRecibo();

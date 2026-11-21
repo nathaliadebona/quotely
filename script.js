@@ -55,6 +55,7 @@ const mensagemValidade = document.getElementById('mensagem-validade');
 const marca = document.getElementById('marca');
 const reciboMarca = document.getElementById('titulo-secundario');
 const formDownload = document.getElementById('form-download');
+const copiarBtn = document.getElementById('copiar-btn');
 
 let cobrado = 'hora';
 let urgente = false;
@@ -355,6 +356,10 @@ marca.addEventListener('input', () => {
 
 formDownload.addEventListener('submit', (evento) => {
     evento.preventDefault();
+});
+
+copiarBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(gerarTexto());
 });
 
 renderizarRecibo();

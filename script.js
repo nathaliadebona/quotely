@@ -40,6 +40,8 @@ const mensagemErro = document.getElementById('erro-servico');
 const opcoesCobranca = document.getElementById('opcoes-cobranca');
 const urgenteBtn = document.getElementById('urgente-btn');
 const urgenciaValor = document.getElementById('urgencia-valor');
+const painelDownload = document.getElementById('painel-download');
+const baixarBtn = document.getElementById('baixar-btn');
 
 let cobrado = 'hora';
 let urgente = false;
@@ -250,6 +252,16 @@ urgenteBtn.addEventListener('click', () => {
     }
 
     renderizarRecibo();
+});
+
+baixarBtn.addEventListener('click', () => {
+    if (baixarBtn.getAttribute('aria-expanded') === 'true') {
+        baixarBtn.setAttribute('aria-expanded', 'false');
+        painelDownload.hidden = true;
+    } else {
+        baixarBtn.setAttribute('aria-expanded', 'true');
+        painelDownload.hidden = false;
+    }
 });
 
 renderizarRecibo();

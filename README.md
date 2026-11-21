@@ -51,7 +51,21 @@ Your services and quote data are not saved: reloading the page brings back the t
 
 ## Screenshots
 
-_Coming soon._
+### Desktop
+
+![Quotely on desktop: services panel and download details on the left, tilted receipt with a zigzag edge on the right](screenshots/desktop.png)
+
+### Add service dialog
+
+![Add service dialog with name, rate, billing unit (hour, day or project), optional description, and a live preview of how it looks on the receipt](screenshots/modal.png)
+
+### Mobile
+
+<img src="screenshots/mobile.png" width="320" alt="Quotely on mobile: the services panel, the download details, and the receipt stacked in a single column">
+
+### PDF
+
+<img src="screenshots/pdf.png" width="420" alt="The quote saved as a PDF through the print dialog, showing only the receipt">
 
 ---
 

@@ -56,6 +56,7 @@ const marca = document.getElementById('marca');
 const reciboMarca = document.getElementById('titulo-secundario');
 const formDownload = document.getElementById('form-download');
 const copiarBtn = document.getElementById('copiar-btn');
+const baixarPdfBtn = document.getElementById('baixar-pdf-btn');
 
 let cobrado = 'hora';
 let urgente = false;
@@ -366,6 +367,10 @@ copiarBtn.addEventListener('click', () => {
     setTimeout(() => {
         copiarBtn.textContent = 'Copiar texto';
     }, 2000);
+});
+
+baixarPdfBtn.addEventListener('click', () => {
+    window.print();
 });
 
 renderizarRecibo();

@@ -416,3 +416,24 @@ textarea {
         font-size: 3.5rem;
     }
 }
+
+@media print {
+    body {
+        background-color: white;
+        print-color-adjust: exact;
+    }
+
+    main {
+        display: block;
+        padding: 0;
+    }
+
+    .painel {
+        display: none;
+    }
+
+    .recibo {
+        transform: none;
+        filter: none;
+    }
+}

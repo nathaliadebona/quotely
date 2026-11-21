@@ -27,6 +27,9 @@ let servicos = [
 const servicosLista = document.querySelector('#servicos-lista');
 const reciboLista = document.querySelector('#recibo-lista');
 const urgencia = document.querySelector('.urgencia');
+const reciboFormaPagamento = document.querySelector('.forma-pagamento');
+const blocoObservacoes = document.querySelector('.observacoes');
+const reciboObservacoes = document.querySelector('.recibo-observacoes');
 
 const subtotalValor = document.getElementById('subtotal-valor');
 const totalValor = document.getElementById('total-valor');
@@ -44,6 +47,8 @@ const painelDownload = document.getElementById('painel-download');
 const baixarBtn = document.getElementById('baixar-btn');
 const nomeCliente = document.getElementById('nome-cliente');
 const reciboCliente = document.getElementById('recibo-cliente');
+const formaPagamento = document.getElementById('forma-pagamento');
+const campoObservacoes = document.getElementById('observacoes');
 
 let cobrado = 'hora';
 let urgente = false;
@@ -268,11 +273,20 @@ baixarBtn.addEventListener('click', () => {
 
 nomeCliente.addEventListener('input', () => {
     const texto = nomeCliente.value.trim();
-    reciboCliente.textContent = texto;
+    reciboCliente.textContent = texto || '[Nome do cliente]';
+});
 
-    if (texto === '') {
-        reciboCliente.textContent = texto || '[Nome do cliente]';
-    }
+formaPagamento.addEventListener('input', () => {
+    const texto = formaPagamento.value.trim();
+    reciboFormaPagamento.textContent = texto || '[Forma de pagamento]';
+});
+
+campoObservacoes.addEventListener('input', () => {
+    const texto = campoObservacoes.value.trim();
+
+    reciboObservacoes.textContent = texto;
+
+    blocoObservacoes.hidden = texto === '';
 });
 
 renderizarRecibo();

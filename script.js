@@ -54,6 +54,7 @@ const reciboValidade = document.getElementById('recibo-validade');
 const mensagemValidade = document.getElementById('mensagem-validade');
 const marca = document.getElementById('marca');
 const reciboMarca = document.getElementById('titulo-secundario');
+const formDownload = document.getElementById('form-download');
 
 let cobrado = 'hora';
 let urgente = false;
@@ -316,6 +317,10 @@ opcoesValidade.addEventListener('click', (evento) => {
 marca.addEventListener('input', () => {
     const texto = marca.value.trim();
     reciboMarca.textContent = texto || '[Sua marca]';
+});
+
+formDownload.addEventListener('submit', (evento) => {
+    evento.preventDefault();
 });
 
 renderizarRecibo();

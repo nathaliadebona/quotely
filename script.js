@@ -42,6 +42,8 @@ const urgenteBtn = document.getElementById('urgente-btn');
 const urgenciaValor = document.getElementById('urgencia-valor');
 const painelDownload = document.getElementById('painel-download');
 const baixarBtn = document.getElementById('baixar-btn');
+const nomeCliente = document.getElementById('nome-cliente');
+const reciboCliente = document.getElementById('recibo-cliente');
 
 let cobrado = 'hora';
 let urgente = false;
@@ -261,6 +263,15 @@ baixarBtn.addEventListener('click', () => {
     } else {
         baixarBtn.setAttribute('aria-expanded', 'true');
         painelDownload.hidden = false;
+    }
+});
+
+nomeCliente.addEventListener('input', () => {
+    const texto = nomeCliente.value.trim();
+    reciboCliente.textContent = texto;
+
+    if (texto === '') {
+        reciboCliente.textContent = texto || '[Nome do cliente]';
     }
 });
 
